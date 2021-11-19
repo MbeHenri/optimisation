@@ -1,0 +1,24 @@
+{% extends 'commons/base.html' %} 
+{% load static %}
+
+{% block title %}
+    methode de Gauss Newton
+{% endblock %} 
+{% block hTitre %}Simulation de la methode Gauss-Newton {% endblock %}
+{% block nDescentePasFixe %} {% url 'pasFixe' %} {% endblock %} 
+{% block nPasOptimale %} {% url 'pasOptimale' %} {% endblock %}
+{% block nNewtonLocale %} {% url 'newtonLocal' %} {% endblock %}
+
+{% block speaking %} 
+                
+                
+{% endblock %}
+
+{% block formulaire %} 
+    {% include 'commons/formPas.html' %}
+                
+{% endblock %}  
+
+{% block content %} 
+
+{% endblock %} 

@@ -1,0 +1,63 @@
+{% extends 'commons/base.html' %} 
+{% load static %}
+
+{% block title %}
+    algorithme a pas Optimal
+{% endblock %} 
+
+{% block hTitre %}Simulation de l'algorithme à pas optimale {% endblock %}
+{% block nDescentePasFixe %} {% url 'pasFixe' %} {% endblock %}
+{% block nNewtonLocale %} {% url 'newtonLocal' %} {% endblock %}
+{% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
+
+{% block speaking %} 
+    <p> methode consitant à utiliser la plus grande pente (à prendre le pas optimal) afin de calculer x* </p>
+    <p> Pour notre cas ce pas est donnée par : (xk²+7²yk²)/(xk²+7³yk²)</p>
+{% endblock %}
+
+{% block formulaire %} 
+    {% include 'commons/formPas.html' %}
+{% endblock %} 
+{% block content %} 
+{% if ok  %}
+        <div>
+            <h2> > Le point critique minimun :  </h2>
+            <div class="alert alert-success" role="alert">
+                {{pointmin}}
+            </div>
+            <h3> > La suite des points générés :</h3>
+            <ul class="list-group">
+                {% for point in liste %}
+                    <li class="list-group-item">{{point}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block experimentations %}
+    {% if ok  %}
+        <section class="bg-light"  >
+            <div class="container ">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h1 class="center" style="margin-bottom: 1.75rem;">Experimentation </h1>
+                        <div>
+                            <p class="lead">
+                                L’ide ici est d'illustrer la progression du nombre d'iterations en variant la precision, en prenant compte
+                                un point fixe [x0,y0] de depart.
+                            </p>
+                        </div>
+                        <br>
+                        <div>
+                            <h2 style="margin-bottom: 1.75rem;">-> Tableau repesentatif </h2>
+                            <br>
+                        <div>
+                            <h2 style="margin-bottom: 1.75rem;">-> Courbe repesentative </h2>
+                        </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

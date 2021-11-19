@@ -1,0 +1,33 @@
+{% extends 'commons/base.html' %} 
+{% load static %}
+
+{% block title %}
+    methode de newton local
+{% endblock %} 
+{% block hTitre %}Simulation de la methode Newton local {% endblock %}
+{% block nDescentePasFixe %} {% url 'pasFixe' %} {% endblock %} 
+{% block nPasOptimale %} {% url 'pasOptimale' %} {% endblock %}
+{% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
+
+{% block speaking %} 
+    <p> methode consitant à exploiter le fait que la fonction soit de classe C² (en calculant la matrice hessiene) afin de calculer x* </p>     
+{% endblock %}
+{% block formulaire %} 
+    {% include 'commons/formNotPas.html' %}        
+{% endblock %} 
+{% block content %} 
+{% if ok  %}
+        <div>
+            <h2> > Le point critique minimun :  </h2>
+            <div class="alert alert-success" role="alert">
+                {{pointmin}}
+            </div>
+            <h3> > La suite des points générés :</h3>
+            <ul class="list-group">
+                {% for point in liste %}
+                    <li class="list-group-item">{{point}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}

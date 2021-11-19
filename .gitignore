@@ -1,0 +1,9 @@
+/optimisation/__pycache__
+/optimisation/asgi.py
+/optimisation/wsgi.py
+/myven
+/db.sqlite3
+/manage.py
+/descente/migrations
+/descente/__pycache__
+/descente/opti/__pycache__

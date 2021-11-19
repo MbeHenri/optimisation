@@ -1,0 +1,97 @@
+{% extends 'commons/base.html' %} 
+{% load static %}
+
+{% block title %}
+    algorithme a pas fixe
+{% endblock %} 
+{% block hTitre %}Simulation de l'algorithme à pas fixe {% endblock %}
+{% block nPasOptimale %} {% url 'pasOptimale' %} {% endblock %}
+{% block nNewtonLocale %} {% url 'newtonLocal' %} {% endblock %}
+{% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
+
+{% block speaking %} 
+    methode consitant a choisi un pas afin de calculer x*
+{% endblock %}
+
+{% block formulaire %}
+    {% include 'commons/formPas.html' %}
+{% endblock %}  
+  
+{% block content %} 
+    {% if ok  %}
+        <div>
+            <h2> > Le point critique minimun :  </h2>
+            <div class="alert alert-success" role="alert">
+                {{pointmin}}
+            </div>
+            <h3> > La suite des points générés :</h3>
+            <ul class="list-group">
+                {% for point in liste %}
+                    <li class="list-group-item">{{point}}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+        {% if invalidPas  %}
+            <div class="alert alert-danger" role="alert">
+                <h2> {{messageError}} </h2>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %} 
+
+{% block experimentations %}
+    {% if ok  %}
+        <section class="bg-light"  >
+            <div class="container ">
+                <div class="row gx-4 justify-content-center">
+                    <div class="col-lg-8">
+                        <h1 class="center" style="margin-bottom: 1.75rem;"> Test de convergence et vitesse de convergence </h1>
+                        <div>
+                            <p class="lead">
+                                L’ide ici est d'illustrer la difficulté à trouver le bon pas
+                                et d'observer la vitesse de convergence en fonction du pas , en prenant compte
+                                un point fixe [x0,y0] de depart.
+                            </p>
+                        </div>
+                        <br>
+                        <div>
+                            <h2 style="margin-bottom: 1.75rem;">-> Tableau de divergence - convergence </h2>
+
+                        </div>
+                        <br>
+                        <div>
+                            <h2 style="margin-bottom: 1.75rem;">-> Courbe de convergence </h2>
+                            <div class="container">
+                                <canvas id="line-chart"  style="height: 15rem"></canvas>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        <script src="{%   static 'descente/js/chart.min.js' %}"></script>
+        <script>
+            var x=JSON.parse("{{x|escapejs}}");
+            var y=JSON.parse("{{y|escapejs}}");
+            const data = {
+                labels: x,
+                datasets: [{
+                    label: 'nombre d\'itérations',
+                    backgroundColor: '#1cb6fd',
+                    borderColor: '#1cb6fd',
+                    data: y,
+                }]
+            };
+            const config = {
+                type: 'line',
+                data: data,
+            };
+        
+            window.onload = function() {
+                var ctx = document.getElementById('line-chart');
+                var ch = new Chart(ctx, config);
+            };
+        </script>
+    {% endif %}
+{% endblock %}

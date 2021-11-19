@@ -1,0 +1,19 @@
+{% extends 'commons/base.html' %} 
+
+{% load static %}
+
+{% block hTitre %}Simulation des algorithmes de descente{% endblock %}
+{% block nDescentePasFixe %} {% url 'pasFixe' %} {% endblock %} 
+{% block nPasOptimale %} {% url 'pasOptimale' %} {% endblock %}
+{% block nNewtonLocale %} {% url 'newtonLocal' %} {% endblock %}
+{% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
+
+{% block content %}
+     <h3>Bienvenue dans le test des algorithmes de descente appliqué aux fonctions suivantes :</h3> 
+     
+     <ul>
+          <li><h3>f(x,y) = (1/2)x² + (7/2)y² </h3> </li>
+          <br>
+          <li><h3>F(x,y) = [ f(x,y), f(x-1,y-1)]</h3></li>
+     </ul>
+{% endblock %}
