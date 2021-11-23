@@ -5,6 +5,8 @@
     methode de newton local
 {% endblock %} 
 {% block hTitre %}Simulation de la methode Newton local {% endblock %}
+{% block nPasWolfe %}  {% url 'pasWolfe' %}  {% endblock %} 
+{% block nPasArmijo %}  {% url 'pasArmijo' %}  {% endblock %} 
 {% block nDescentePasFixe %} {% url 'pasFixe' %} {% endblock %} 
 {% block nPasOptimale %} {% url 'pasOptimale' %} {% endblock %}
 {% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
@@ -21,6 +23,10 @@
             <h2> > Le point critique minimun :  </h2>
             <div class="alert alert-success" role="alert">
                 {{pointmin}}
+            </div>
+            <h3> > Nombre d'itérations :  </h3>
+            <div class="alert alert-success" role="alert">
+                {{nbreIter}}
             </div>
             <h3> > La suite des points générés :</h3>
             <ul class="list-group">

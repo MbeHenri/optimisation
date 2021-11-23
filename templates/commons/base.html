@@ -36,6 +36,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto py-4 py-lg-0">
                     <li class="nav-item"><a class="nav-link" href=" {% block nDescentePasFixe %} #about {% endblock %} ">déscente à pas fixe</a></li>
+                    <li class="nav-item"><a class="nav-link" href=" {% block nPasArmijo %} #about {% endblock %} ">déscente à pas de armijo</a></li>
+                    <li class="nav-item"><a class="nav-link" href=" {% block nPasWolfe %} #about {% endblock %} ">déscente à pas de wolfe</a></li>
                     <li class="nav-item"><a class="nav-link" href=" {% block nPasOptimale %} #about {% endblock %} ">déscente à pas Optimal</a></li>
                     <li class="nav-item"><a class="nav-link" href=" {% block nNewtonLocale %} #about {% endblock %} ">newton-locale </a></li>
                     <li class="nav-item"><a class="nav-link" href=" {% block nGaussNewton %} #about {% endblock %} ">Gauss- Newton</a></li>
@@ -52,7 +54,7 @@
         </div>
     </header>
     <!-- section de page -->
-    <section id="about">
+    <div id="about" class="mt-5">
         <div class="container">
             <div class="row justify-content-center">
                 {% block formulaire %} 
@@ -60,7 +62,7 @@
                 {% block content %}
                 {% endblock %}
         </div>
-    </section>
+    </div>
     <div class="secton" id=""></div>
     <!-- section de test de convergence ( qui concerne le pas fixe ) -->
     {% block experimentations %}

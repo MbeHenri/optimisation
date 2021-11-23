@@ -9,6 +9,8 @@
 {% block nDescentePasFixe %} {% url 'pasFixe' %} {% endblock %}
 {% block nNewtonLocale %} {% url 'newtonLocal' %} {% endblock %}
 {% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
+{% block nPasWolfe %}  {% url 'pasWolfe' %}  {% endblock %} 
+{% block nPasArmijo %}  {% url 'pasArmijo' %}  {% endblock %} 
 
 {% block speaking %} 
     <p> methode consitant à utiliser la plus grande pente (à prendre le pas optimal) afin de calculer x* </p>
@@ -16,7 +18,7 @@
 {% endblock %}
 
 {% block formulaire %} 
-    {% include 'commons/formPas.html' %}
+    {% include 'commons/formNotPas.html' %}
 {% endblock %} 
 {% block content %} 
 {% if ok  %}
@@ -25,36 +27,46 @@
             <div class="alert alert-success" role="alert">
                 {{pointmin}}
             </div>
-            <h3> > La suite des points générés :</h3>
-            <ul class="list-group">
-                {% for point in liste %}
-                    <li class="list-group-item">{{point}}</li>
-                {% endfor %}
-            </ul>
+            <h3> > Nombre d'itérations :  </h3>
+            <div class="alert alert-success" role="alert">
+                {{nbreIter}}
+            </div>
         </div>
     {% endif %}
 {% endblock %}
 {% block experimentations %}
     {% if ok  %}
         <section class="bg-light"  >
-            <div class="container ">
-                <div class="row gx-4 justify-content-center">
+            <div class="container-fluid">
+                <div class="row ">
                     <div class="col-lg-8">
-                        <h1 class="center" style="margin-bottom: 1.75rem;">Experimentation </h1>
-                        <div>
-                            <p class="lead">
-                                L’ide ici est d'illustrer la progression du nombre d'iterations en variant la precision, en prenant compte
-                                un point fixe [x0,y0] de depart.
-                            </p>
-                        </div>
-                        <br>
-                        <div>
-                            <h2 style="margin-bottom: 1.75rem;">-> Tableau repesentatif </h2>
-                            <br>
-                        <div>
-                            <h2 style="margin-bottom: 1.75rem;">-> Courbe repesentative </h2>
-                        </div> 
-                        </div>
+                        <h2 style="margin-bottom: 1.75rem;">->Tableau de trace </h2>
+                        <p>ici on donne la trace des operations </p>
+                        
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">k</th>
+                                <th scope="col">f(xk,yk)</th>
+                                <th scope="col">|| grad(f(xk,yk))||</th>
+                                <th scope="col">sk</th>
+                                <th scope="col">xk</th>
+                                <th scope="col">yk</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for k,f,norm,s,x,y  in datas %}
+                                    <tr>
+                                        <th scope="row">{{k}}</td>
+                                        <td>{{f}}</td>
+                                        <td>{{norm}}</td>
+                                        <td>{{s}}</td>
+                                        <td>{{x}}</td>
+                                        <td>{{y}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

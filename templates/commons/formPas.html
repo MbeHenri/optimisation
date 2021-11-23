@@ -2,24 +2,48 @@
     <form method="GET" action="#">
         <div class="form-group">
             <h4>Point de départ</h4>
-            <label for="x0">composante en x du point</label>
-            <input type="text" class="form-control" id="x0" name="x0" placeholder="entrez une composante en x0">
-            <label for="y0">Composante en y du point</label>
-            <input type="text" class="form-control" id="y0" name="y0" placeholder="entrez une composante en y0">
+            <div class="form-floating mb-1">
+                <input type="text" class="form-control" id="x0" name="x0" placeholder="entrez une composante en x0">
+                <label for="x0">Composante en x du point</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="y0" name="y0" placeholder="entrez une composante en y0">
+                <label for="y0">Composante en y du point</label>
+            </div>
         </div>
-        <br>
         <div class="form-group">
             <h4>Le pas </h4>
-            <label for="pas"> valeur du pas </label>
-            <input type="text" class="form-control" id="pas" name="pas" placeholder="entrez un pas">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="pas" name="pas" placeholder="entrez un pas">
+                <label for="pas"> valeur du pas </label> 
+            </div>   
         </div>
-        <br>
         <div class="form-group">
             <h4>La précision </h4>
-            <label for="precision">valeur de la précision </label>
-            <input type="text" class="form-control" id="precision" name="precision" placeholder=" entrez une précision ">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="precision" name="precision" placeholder=" entrez une précision ">
+                <label for="precision">valeur de la précision "e"</label>
+            </div>
         </div>
-        <br>
+        <div class="form-group shadow p-3">
+            <h4>critères ajoutés</h4>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="stag_cour" name="stag_cour" value="true">
+                <label class="form-check-label" for="stag_cour" >stagnation de la valeur courante </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="stag_sol" name="stag_sol" value="true" >
+                <label class="form-check-label" for="stag_sol" >stagnation de la solution  </label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="with_max" name="with_max" value="true">
+                <label class="form-check-label" for="with_max">prise en compte du nombre maximum d'itérations</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="iterMax" name="iterMax" placeholder=" entrez une précision ">
+                <label for="iterMax">nombre d'iterations maximal</label>
+            </div>
+        </div>  
         <button type="submit" class="btn btn-primary">Valider</button>
     </form>
 </div>

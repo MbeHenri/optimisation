@@ -1,0 +1,37 @@
+{% extends 'commons/base.html' %} 
+
+{% load static %}
+
+{% block hTitre %}Algorithme de pas utilisant la condition de Arjino{% endblock %}
+{% block nDescentePasFixe %} {% url 'pasFixe' %} {% endblock %} 
+{% block nPasOptimale %} {% url 'pasOptimale' %} {% endblock %}
+{% block nNewtonLocale %} {% url 'newtonLocal' %} {% endblock %}
+{% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
+{% block nPasWolfe %}  {% url 'pasWolfe' %}  {% endblock %} 
+
+{% block speaking %} 
+    methode consitant a choisi un pas à une itération ,recherchée grace à la condition de Armijo sur la recherche lineaire 
+{% endblock %}
+
+{% block formulaire %}
+    {% include 'commons/formNotPas.html' %}
+{% endblock %}  
+  
+{% block content %} 
+    {% if ok  %}
+        <div>
+            <h2> > Le point critique minimun :  </h2>
+            <div class="alert alert-success" role="alert">
+                {{pointmin}}
+            </div>
+            <h3> > Nombre d'itérations :  </h3>
+            <div class="alert alert-success" role="alert">
+                {{nbreIter}}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %} 
+
+{% block experimentations %}
+    
+{% endblock %}

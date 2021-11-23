@@ -1,0 +1,37 @@
+{% extends 'commons/base.html' %} 
+
+{% load static %}
+
+{% block hTitre %}Algorithme de pas utilisant les conditions de Wolfe{% endblock %}
+{% block nDescentePasFixe %} {% url 'pasFixe' %} {% endblock %} 
+{% block nPasOptimale %} {% url 'pasOptimale' %} {% endblock %}
+{% block nNewtonLocale %} {% url 'newtonLocal' %} {% endblock %}
+{% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
+{% block nPasArmijo %}  {% url 'pasArmijo' %}  {% endblock %} 
+
+{% block speaking %} 
+    methode consitant a choisi un pas à une itération ,recherchée grace à les conditions de wolfe sur la recherche lineaire 
+{% endblock %}
+
+{% block formulaire %}
+    {% include 'commons/formNotPas.html' %}
+{% endblock %}  
+  
+{% block content %} 
+    {% if ok  %}
+        <div>
+            <h2> > Le point critique minimun :  </h2>
+            <div class="alert alert-success" role="alert">
+                {{pointmin}}
+            </div>
+            <h3> > Nombre d'itérations :  </h3>
+            <div class="alert alert-success" role="alert">
+                {{nbreIter}}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %} 
+
+{% block experimentations %}
+    
+{% endblock %}

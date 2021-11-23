@@ -7,13 +7,13 @@
 {% block nPasOptimale %} {% url 'pasOptimale' %} {% endblock %}
 {% block nNewtonLocale %} {% url 'newtonLocal' %} {% endblock %}
 {% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
+{% block nPasWolfe %}  {% url 'pasWolfe' %}  {% endblock %} 
+{% block nPasArmijo %}  {% url 'pasArmijo' %}  {% endblock %} 
 
 {% block content %}
-     <h3>Bienvenue dans le test des algorithmes de descente appliqué aux fonctions suivantes :</h3> 
+     <h3>Bienvenue dans le test des algorithmes de descente appliqué à l' application suivante:</h3> 
      
      <ul>
           <li><h3>f(x,y) = (1/2)x² + (7/2)y² </h3> </li>
-          <br>
-          <li><h3>F(x,y) = [ f(x,y), f(x-1,y-1)]</h3></li>
      </ul>
 {% endblock %}

@@ -8,6 +8,8 @@
 {% block nPasOptimale %} {% url 'pasOptimale' %} {% endblock %}
 {% block nNewtonLocale %} {% url 'newtonLocal' %} {% endblock %}
 {% block nGaussNewton %} {% url 'gaussNewton' %} {% endblock %}
+{% block nPasWolfe %}  {% url 'pasWolfe' %}  {% endblock %} 
+{% block nPasArmijo %}  {% url 'pasArmijo' %}  {% endblock %} 
 
 {% block speaking %} 
     methode consitant a choisi un pas afin de calculer x*
@@ -24,12 +26,10 @@
             <div class="alert alert-success" role="alert">
                 {{pointmin}}
             </div>
-            <h3> > La suite des points générés :</h3>
-            <ul class="list-group">
-                {% for point in liste %}
-                    <li class="list-group-item">{{point}}</li>
-                {% endfor %}
-            </ul>
+            <h3> > Nombre d'itérations :  </h3>
+            <div class="alert alert-success" role="alert">
+                {{nbreIter}}
+            </div>
         </div>
     {% else %}
         {% if invalidPas  %}
@@ -43,29 +43,33 @@
 {% block experimentations %}
     {% if ok  %}
         <section class="bg-light"  >
-            <div class="container ">
-                <div class="row gx-4 justify-content-center">
+            <div class="container-fluid">
+                <div class="row">
                     <div class="col-lg-8">
-                        <h1 class="center" style="margin-bottom: 1.75rem;"> Test de convergence et vitesse de convergence </h1>
-                        <div>
-                            <p class="lead">
-                                L’ide ici est d'illustrer la difficulté à trouver le bon pas
-                                et d'observer la vitesse de convergence en fonction du pas , en prenant compte
-                                un point fixe [x0,y0] de depart.
-                            </p>
+                        <h2 style="margin-bottom: 1.75rem;">-> Courbe de pas-iterations </h2>
+                        <p>ici on prend des pas variants partant de 0.1 (avec un ecart de 0.01) qui ne permettent d'avoir divergence </p>
+                        <div class="container">
+                            <canvas id="line-chart"  style="height: 30rem"></canvas>
                         </div>
-                        <br>
-                        <div>
-                            <h2 style="margin-bottom: 1.75rem;">-> Tableau de divergence - convergence </h2>
-
-                        </div>
-                        <br>
-                        <div>
-                            <h2 style="margin-bottom: 1.75rem;">-> Courbe de convergence </h2>
-                            <div class="container">
-                                <canvas id="line-chart"  style="height: 15rem"></canvas>
-                            </div>
-                        </div> 
+                        <h2 style="margin-bottom: 1.75rem;">->Tableau representatif </h2>
+                        <p>"Div" indique qu'il y'a divergence et dans ce cas les pas varient de 0.1 à 1 avec le meme ecart</p>
+                        
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th scope="col">pas</th>
+                                <th scope="col">nombre itérations</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for pas,nbre  in datas %}
+                                    <tr>
+                                        <td>{{pas}}</td>
+                                        <td>{{nbre}}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
