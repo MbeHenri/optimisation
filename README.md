@@ -1,2 +1,2 @@
 # optimisation
-projet portant sur l' étude visant à resoudre les problèmes d'optimisation 
+projet portant sur la résolution des problèmes d'optimisation 
